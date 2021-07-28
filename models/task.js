@@ -10,4 +10,4 @@ const TodoSchema = new Schema(
   { timestamps: true }
 )
 
-export deafault mongoose.model("Todo", TodoSchema)
+export default mongoose.model("Todo", TodoSchema)
