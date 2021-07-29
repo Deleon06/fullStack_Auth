@@ -5,29 +5,30 @@ import Home from "./views/Home/Home"
 import SignUp from './views/SignUp/SignUp';
 import SignIn from './views/SignIn/SignIn';
 import {verify} from "./services/users"
-import { getAllTodos } from './services/todos';
 import NewTodo from './views/NewTodo/NewTodo';
 
 function App() {
   const [user, setUser] = useState(null)
-  const [todos, setTodos] = useState()
 
   useEffect(() => {
     const verifyUser = async () => {
-      let data = await getAllTodos();
-      setTodos(data)
-   }
+     setUser(await verify())
+    }
+    verifyUser()
   }, [])
   return (
     <div className="App">
+      <Route exact path="/">
+        <Home user={user} setUser={setUser}/>
+      </Route>
       {/* route for all todo's */}
       {/* single todo */}
-      <Route path="/new-todo">
-        <NewTodo setUser={setUser} user={user} />
-      </Route>
-      <Route path="/">
-        <Home />
-      </Route>
+      {user && (
+        <Route path="/new-todo">
+          <NewTodo setUser={setUser} user={user} />
+        </Route>
+      )}
+    
       {!user && (
         <>
       <Route path="/sign-in">
@@ -37,7 +38,7 @@ function App() {
         <SignUp setUser={setUser} user={user}/>
       </Route>
         </>
-      )}
+        )}
     </div>
   );
 }

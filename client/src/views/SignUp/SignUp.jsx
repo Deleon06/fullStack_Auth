@@ -17,17 +17,17 @@ export default function SignUp(props) {
     history.push('/')
   }
   const handleInput = (e) => {
-    const { id, value } = e.target
+    const { id, value } = e.target;
     setInput((prevInput) => ({
       ...prevInput,
-      [id]:value,
-    }))
-  }
+      [id]: value,
+    }));
+  };
 
   return (
     <Layout>
       <br />
-      SignUp
+      Sign Up
       <br />
       <br />
       <form onSubmit={handleSubmit}>
@@ -35,6 +35,7 @@ export default function SignUp(props) {
         <br />
         <input
           type="text"
+          id="username"
           value={input.username}
           onChange={handleInput}
         />
@@ -43,6 +44,7 @@ export default function SignUp(props) {
         <br />
         <input
           type="email"
+          id="email"
           value={input.email}
           onChange={handleInput}
         />
@@ -51,6 +53,7 @@ export default function SignUp(props) {
         <br />
         <input
           type="password"
+          id="password"
           value={input.password}
           onChange={handleInput}
         />

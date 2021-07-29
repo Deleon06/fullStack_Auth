@@ -1,10 +1,10 @@
-import React from 'react'
+import { useState} from 'react'
 import Layout from '../../components/Layout/Layout'
 import { createTodo } from '../../services/todos'
 import {useHistory} from 'react-router'
 
 export default function NewTodo(props) {
-  const [input, setInput] = setState({ name: "", due_date: "", complete: "" })
+  const [input, setInput] = useState({ name: "", due_date: "", complete: "" })
   const history = useHistory()
    
   const handleChange = (e) => {
@@ -28,11 +28,23 @@ export default function NewTodo(props) {
           New Todo
           <form onSubmit={handleSubmit}>
             <label>Name</label>
-            <input id="name" value={input.name} onChange={handleChange} />
+            <input
+              id="name"
+              value={input.name}
+              onChange={handleChange}
+            />
             <label>Due Data</label>
-            <input id="due_date" value={input.due_date} onChange={handleChange} />
+            <input
+              id="due_date"
+              value={input.due_date}
+              onChange={handleChange}
+            />
             <label>Complete</label>
-            <input id="complete" value={input.complete} onChange={handleChange} />
+            <input
+              id="complete"
+              value={input.complete}
+              onChange={handleChange}
+            />
           </form>
         </div>
       </Layout>
