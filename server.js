@@ -15,7 +15,7 @@ const PORT = process.env.PORT || 4567;
 //give access to req.body
 app.use(express.json());
 app.use(cors());
-//change after deployment and we know everything is worng "tiny or small"
+//change after deployment and we know everything is working "tiny or small"
 app.use(morgan("dev"));
 
 app.use("/api", routes);
